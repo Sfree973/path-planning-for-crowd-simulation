@@ -4,3 +4,6 @@ we upload the model we used and the source program to complete the evacuation.Ou
   The. FBX file is our model and the building model in this paper. In addition, we also provide training files in OpenAI Gym environment. This example can better understand our approach. This requires that we first match the open source platform with the relevant environment of Python 3.5. Finally, we provide evacuation documents, which can be successfully evacuated after importing the model.
 
 
+https://pan.baidu.com/s/1It0oDsJOSRZ2T_tgZYcdKw 
+
+pass：i5w9 
