@@ -1,0 +1,6 @@
+  This resource is paper "Improved multi-agent deep deterministic policy gradient for path planning-based crowd simulation" source code program.In the link, 
+we upload the model we used and the source program to complete the evacuation.Our resources are used only for learning and communication.
+
+  The. FBX file is our model and the building model in this paper. In addition, we also provide training files in OpenAI Gym environment. This example can better understand our approach. This requires that we first match the open source platform with the relevant environment of Python 3.5. Finally, we provide evacuation documents, which can be successfully evacuated after importing the model.
+
+
