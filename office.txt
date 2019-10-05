@@ -1,0 +1,374 @@
+
+import numpy as np
+from multiagent.core import World, Agent, Landmark, Border
+from multiagent.scenario import BaseScenario
+
+
+class Scenario(BaseScenario):
+    def make_world(self):
+        world = World()
+        # set any world properties first
+
+        world.dim_c = 2
+        num_agents = 50
+        num_landmarks = 25
+        world.collaborative = True
+        num_agents =  num_agents
+
+        num_borders = 250# (20 * 4)(18*4)
+        # add agents
+
+        # add agents
+        world.agents = [Agent() for i in range(num_agents)]
+        for i, agent in enumerate(world.agents):
+            agent.name = 'agent %d' % i
+            agent.collide = True
+            agent.silent = True
+            agent.size = 0.025
+            agent.accel = 3.0
+            agent.max_speed = 1.0
+        # add landmarks
+        world.landmarks = [Landmark() for i in range(num_landmarks)]
+        for i, landmark in enumerate(world.landmarks):
+            landmark.name = 'landmark %d' % i
+            landmark.collide = False
+            landmark.movable = False
+            landmark.boundary = False
+            landmark.size = 0.035
+
+        # add borders
+
+        world.borders = [Border() for i in range(num_borders)]
+        for i, border in enumerate(world.borders):
+            border.name = 'border %d' % i
+            border.collide = True
+            border.movable = False
+            border.size = 0.05
+            border.boundary = False
+            border.shape = [[-0.5, -0.5], [0.5, -0.5], [0.5, 0.5], [-0.5, 0.5]]
+            #border.shape = [[-0.1, -0.1], [0.1, -0.1], [0.1, 0.1], [-0.1, 0.1]]
+
+            #print(border.pos)
+        # make initial conditions
+        self.reset_world(world)
+        return world
+
+    def reset_world(self, world):
+        # random properties for agents
+        for i, agent in enumerate(world.agents):
+            agent.color = np.array([0.35, 0.35, 0.85])
+        # random properties for landmarks
+        for i, landmark in enumerate(world.landmarks):
+            landmark.color = np.array([0.85, 0.25, 0.25])
+        # random properties for borders
+        for i, border in enumerate(world.borders):
+            border.color = np.array([0.25, 0.25, 0.25])
+        # set random initial states
+        for i,agent in enumerate (world.agents):
+            if i == 0:#1
+                agent.state.p_pos = np.asarray([-0.3, -0.3])
+            elif i == 1:#2
+                agent.state.p_pos = np.asarray([0.11, 0.43])
+
+            elif i==2:#3
+                agent.state.p_pos = np.asarray([0.45, 0.0])
+
+            elif i==3:#4
+                agent.state.p_pos = np.asarray([-0.3, 0.3])
+            elif i==4:#5
+                agent.state.p_pos = np.asarray([0.15, -0.5])
+            elif i ==5:#6
+                agent.state.p_pos = np.asarray([0.45, -0.4])
+            elif i ==6:#7
+                agent.state.p_pos = np.asarray([0.45, 0.3])
+            elif i ==7:#8
+                agent.state.p_pos = np.asarray([-0.45, -0.5])
+            elif i==8:#9
+                agent.state.p_pos = np.asarray([-0.185, 0.35])
+            elif i==9:#10
+                agent.state.p_pos = np.asarray([-0.3, 0.0])
+            #agent.state.p_pos = np.random.uniform(-0.3, +0.3, world.dim_p)
+            agent.state.p_vel = np.zeros(world.dim_p)
+            agent.state.c = np.zeros(world.dim_c)
+
+        # top_gate
+
+        #top_gate
+        poss = []
+        x = 0.165
+        y = 0.8
+        # top
+        for count in range(4):
+            poss.append([x, y])
+            x -= 0.085
+
+        x = -0.14
+        y = 0.9
+        # top
+
+        poss.append([x, y])
+
+        x = 0.2
+        y = 0.9
+        # top
+
+        poss.append([x, y])
+
+        x = 0.2
+        y = 0.95
+        # top
+
+        poss.append([x, y])
+        x = -0.14
+        y = 0.95
+        # top
+
+        poss.append([x, y])
+
+        #dowm_gate
+        x = 0.15
+        y = -0.8
+        # down
+        for count in range(5):
+            poss.append([x, y])
+            x -= 0.082
+
+        x = -0.185
+        y = -0.89
+        # down
+
+        poss.append([x, y])
+#down
+        x = 0.16
+        y = -0.89
+        # down
+
+
+        poss.append([x, y])
+        #x -= 0.085
+        x = -0.185
+        y = -0.95
+        # down
+
+        poss.append([x, y])
+        x = 0.16
+        y = -0.95
+        # down
+
+        poss.append([x, y])
+
+
+        #right_gate
+        x = 0.75
+        y = -0.17
+
+        for count in range(4):
+            poss.append([x, y])
+            y += 0.085
+
+        #right
+        x = 0.85
+        y = -0.199
+        # down
+
+        poss.append([x, y])
+
+        x = 0.85
+        y = 0.1
+        # down
+
+        poss.append([x, y])
+        x = 0.9
+        y = 0.1
+        # down
+
+        poss.append([x, y])
+        #right
+        x = 0.9
+        y = -0.199
+        # down
+
+        poss.append([x, y])
+
+
+
+        for i, landmark in enumerate(world.landmarks):
+            if not landmark.boundary:
+                landmark.state.p_pos = np.asarray(poss[i])
+                landmark.state.p_vel = np.zeros(world.dim_p)
+                #landmark.state.p_pos = np.random.uniform(+0.1, +0.6, world.dim_p)
+                #landmark.state.p_pos = np.array[[0.5, 0.5],[-0.1,-0.1]]
+                #landmark.state.p_pos = np.asarray([0, 0])
+                #data1=[[0.5,0.5],[-0.1,-0.1],world.dim_p]
+                #landmark.state.p_pos = np.asarray([0.0, 0.0])
+                #landmark.state.p_pos[i] = np.array([0.5, 0.5],[-0.1,-0.1])
+                #landmark.state.p_pos = np.asarray(data1,float)
+                #landmark.state.p_pos = np.asarray(data1,world.dim_p)
+                '''
+                if i ==0 :
+                    landmark.state.p_pos = np.asarray([0, 0.74])
+                elif i==1:
+                    landmark.state.p_pos = np.asarray([0.72, 0.0])
+                elif i==2:
+                    landmark.state.p_pos = np.asarray([0, -0.74])
+
+                poss = []
+
+                x = 0
+                y = 1.95
+                # top
+                for count in range(22):
+                    pos.append([x, y])
+                    x -= 0.025
+
+                for i, border in enumerate(world.landmarks):
+                    landmark.state.p_pos = np.asarray(poss[i])
+                landmark.state.p_vel = np.zeros(world.dim_p)'''
+        pos = []
+
+        x = -0.75
+        y = -0.8
+        # bottom
+        for count in range(20):
+            pos.append([x, y])
+            x += 0.025
+
+        x = 0.23
+        y = -0.8
+        # bottom
+        for count in range(21):
+            pos.append([x, y])
+            x += 0.025
+
+        x = 0.75
+        y = -0.8
+        # right
+
+        for count in range(22):
+            pos.append([x, y])
+            y += 0.025
+
+        x = 0.75
+        y = 0.175
+
+        # right
+
+        for count in range(25):
+            pos.append([x, y])
+            y += 0.025
+
+        x = 0.75
+        y = 0.8
+
+        # top
+        for count in range(21):
+            pos.append([x, y])
+            x -= 0.025
+
+        x = -0.195
+        y = 0.8
+
+        # top
+        for count in range(22):
+            pos.append([x, y])
+            x -= 0.025
+
+        x = -0.75
+        y = 0.8
+        # left
+        for count in range(64):
+            pos.append([x, y])
+            y -= 0.025
+        #mid_down
+        x = -0.175
+        y = -0.175
+        for count in range(14):
+            pos.append([x, y])
+            x += 0.025
+        #mid_right
+        x = 0.175
+        y =-0.175
+        for count in range(14):
+            pos.append([x,y])
+            y +=0.025
+        #mid_top
+        x = 0.175
+        y = 0.175
+        for count in range(14):
+            pos.append([x,y])
+            x -=0.025
+        #mid_left
+        x =-0.175
+        y = 0.175
+        for count in range(14):
+            pos.append([x,y])
+            y -= 0.025
+
+
+
+        for i, border in enumerate(world.borders):
+            border.state.p_pos = np.asarray(pos[i])
+            border.state.p_vel = np.zeros(world.dim_p)
+            #print(border.state.p_pos)
+
+    def benchmark_data(self, agent, world):
+        rew = 0
+        collisions = 0
+        occupied_landmarks = 0
+        min_dists = 0
+        for l in world.landmarks:
+            dists = [np.sqrt(np.sum(np.square(a.state.p_pos - l.state.p_pos))) for a in world.agents]
+            min_dists += min(dists)
+            rew -= min(dists)
+            if min(dists) < 0.1:
+                occupied_landmarks += 1
+        if agent.collide:
+            for a in world.agents:
+                if self.is_collision(a, agent):
+                    rew -= 1
+                    collisions += 1
+        return (rew, collisions, min_dists, occupied_landmarks)
+
+
+
+    def is_collision(self, agent1, agent2):
+        delta_pos = agent1.state.p_pos - agent2.state.p_pos
+        dist = np.sqrt(np.sum(np.square(delta_pos)))
+        dist_min = agent1.size + agent2.size
+        return True if dist < dist_min else False
+
+
+    def landmarks(self, world):
+        return [landmark for landmark in world.landmarks]
+    def reward(self, agent, world):
+        # Agents are rewarded based on minimum agent distance to each landmark, penalized for collisions
+        rew = 0
+        for l in world.landmarks:
+            dists = [np.sqrt(np.sum(np.square(a.state.p_pos - l.state.p_pos))) for a in world.agents]
+            rew -= min(dists)
+        if agent.collide:
+            for a in world.agents:
+                if self.is_collision(a, agent):
+                    rew -= 1
+        return rew
+
+    def observation(self, agent, world):
+        # get positions of all entities in this agent's reference frame
+        entity_pos = []
+        for entity in world.landmarks:  # world.entities:
+            entity_pos.append(entity.state.p_pos - agent.state.p_pos)
+        # entity colors
+        entity_color = []
+        for entity in world.landmarks:  # world.entities:
+            entity_color.append(entity.color)
+        # communication of all other agents
+        comm = []
+        other_pos = []
+        for other in world.agents:
+            if other is agent: continue
+            comm.append(other.state.c)
+            other_pos.append(other.state.p_pos - agent.state.p_pos)
+        return np.concatenate([agent.state.p_vel] + [agent.state.p_pos] + entity_pos + other_pos + comm)
+
+
+

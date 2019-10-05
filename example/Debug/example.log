@@ -1,0 +1,39 @@
+﻿生成启动时间为 2019/7/13 23:03:06。
+     1>项目“F:\郑尚菲\RVO11\RVO11\example\example.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         F:\Program Files\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt example.cpp
+         example.cpp
+     1>f:\郑尚菲\rvo11\rvo11\example\example.cpp(23): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 f:\program files\microsoft visual studio 12.0\vc\include\stdio.h(211) : 参见“fopen”的声明
+     1>f:\郑尚菲\rvo11\rvo11\example\example.cpp(28): warning C4101: “szBuffer”: 未引用的局部变量
+     1>f:\郑尚菲\rvo11\rvo11\example\example.cpp(74): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 f:\program files\microsoft visual studio 12.0\vc\include\stdio.h(211) : 参见“fopen”的声明
+     1>f:\郑尚菲\rvo11\rvo11\example\example.cpp(123): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 f:\program files\microsoft visual studio 12.0\vc\include\stdio.h(211) : 参见“fopen”的声明
+     1>f:\郑尚菲\rvo11\rvo11\example\example.cpp(142): warning C4101: “dis”: 未引用的局部变量
+     1>f:\郑尚菲\rvo11\rvo11\example\example.cpp(138): warning C4101: “min_dis”: 未引用的局部变量
+     1>f:\郑尚菲\rvo11\rvo11\example\example.cpp(139): warning C4101: “goal_index”: 未引用的局部变量
+     1>f:\郑尚菲\rvo11\rvo11\example\example.cpp(141): warning C4101: “j”: 未引用的局部变量
+     1>f:\郑尚菲\rvo11\rvo11\example\example.cpp(226): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 f:\program files\microsoft visual studio 12.0\vc\include\stdio.h(356) : 参见“sprintf”的声明
+     1>f:\郑尚菲\rvo11\rvo11\example\example.cpp(246): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 f:\program files\microsoft visual studio 12.0\vc\include\stdio.h(211) : 参见“fopen”的声明
+     1>f:\郑尚菲\rvo11\rvo11\example\example.cpp(262): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 f:\program files\microsoft visual studio 12.0\vc\include\stdio.h(211) : 参见“fopen”的声明
+     1>f:\郑尚菲\rvo11\rvo11\example\example.cpp(228): warning C4101: “g”: 未引用的局部变量
+     1>f:\郑尚菲\rvo11\rvo11\example\example.cpp(295): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 f:\program files\microsoft visual studio 12.0\vc\include\stdio.h(211) : 参见“fopen”的声明
+       Link:
+         F:\Program Files\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\郑尚菲\RVO11\RVO11\example\Debug\example.exe" /INCREMENTAL /NOLOGO /LIBPATH:..\lib /LIBPATH:.\lib rvo_d.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\郑尚菲\RVO11\RVO11\example\Debug\example.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\郑尚菲\RVO11\RVO11\example\Debug\example.lib" /MACHINE:X86 /SAFESEH Debug\Agent.obj
+         Debug\Goal.obj
+         Debug\KDTree.obj
+         Debug\Obstacle.obj
+         Debug\RoadmapVertex.obj
+         Debug\RVOSimulator.obj
+         Debug\example.obj
+         example.vcxproj -> F:\郑尚菲\RVO11\RVO11\example\Debug\example.exe
+     1>已完成生成项目“F:\郑尚菲\RVO11\RVO11\example\example.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:02.06
